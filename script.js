@@ -1,45 +1,21 @@
+import data from './boardData.js'
 
-let gold=0
-let silver=0
-let bronze=0;
-let lives=5;
-let score=0;
+let gold = 0
+let silver = 0
+let bronze = 0;
+let lives = 2;
+let score = 0;
 
 
-let blockData = [
+let boardData = [...data]
 
-    {
-        gold: 13,
-        medkit: 1
-    },
-    {
-        bronze: 2
-    },
-    {},
-    {
-        bronze: 7,
-        medkit: 1
-    },
-    {
-        gold: 20,
-    },
-    {
-        bronze: 2
-    },
-    {},
-    {
-        silver: 10,
-    },
-    {}
-]
-
-const boardSize = 3*3;
+const boardSize = 3 * 3;
 const board = document.getElementById('board');
-const lifeBar=document.querySelector('.lives')
-const goldScore=document.querySelector('.score-gold')
-const bronzeScore=document.querySelector('.score-bronze')
-const silverScore=document.querySelector('.score-silver')
-const totalScore=document.querySelector('.current-score')
+const lifeBar = document.querySelector('.lives')
+const goldScore = document.querySelector('.score-gold')
+const bronzeScore = document.querySelector('.score-bronze')
+const silverScore = document.querySelector('.score-silver')
+const totalScore = document.querySelector('.current-score')
 
 for (let i = 0; i < boardSize; i++) {
     const block = document.createElement('div');
@@ -50,43 +26,59 @@ for (let i = 0; i < boardSize; i++) {
 }
 
 
-function  blockClick(e){
+function blockClick(e) {
 
     lives--;
 
-    lifeBar.textContent=lives
-    const blockId=e.target.id
-    if(e.target.classList.contains('clicked'))return
+    lifeBar.textContent = lives
+    const blockId = e.target.id
+    if (e.target.classList.contains('clicked')) return
     else e.target.classList.add('clicked')
-    console.log(blockData[blockId])
+    console.log(boardData[blockId])
 
-    if(Object.keys(blockData[blockId]).length===0){
-        console.log(gold, silver , bronze ,lives)
+    if (Object.keys(boardData[blockId]).length === 0) {
         return
     }
 
-    gold+=blockData[blockId].gold??0
-    silver+=blockData[blockId].silver?? 0
-    bronze+=blockData[blockId].bronze?? 0
-    lives+=blockData[blockId].medkit ?? 0
-    blockData[blockId]={}
+    gold += boardData[blockId].gold ?? 0
+    silver += boardData[blockId].silver ?? 0
+    bronze += boardData[blockId].bronze ?? 0
+    lives += boardData[blockId].medkit ?? 0
+    boardData[blockId] = {}
 
-    score= gold*7+silver*4+bronze*1
+    score = gold * 7 + silver * 4 + bronze * 1
 
-    goldScore.textContent=gold
-    silverScore.textContent=silver
-    bronzeScore.textContent=bronze
-    totalScore.textContent= `score :${score}`
+    goldScore.textContent = gold
+    silverScore.textContent = silver
+    bronzeScore.textContent = bronze
+    totalScore.textContent = `score :${score}`
 
-    console.log(gold, silver , bronze ,lives)
+
+    if (lives < 0) {
+        finishGame()
+    }
+
+    console.log(gold, silver, bronze, lives)
+}
+
+function finishGame() {
+    console.log('your final score : ' + score)
+    Array.from(board.children).forEach(child => child.classList.remove('clicked'))
+
+    gold = 0;
+    silver = 0;
+    bronze = 0;
+    lives = 2;
+    score = 0;
+
+    boardData=[...data]
 }
 
 
 
 
 
-
-
+ 
 
 
 
