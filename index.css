@@ -1,0 +1,70 @@
+:root{
+    margin: 0;
+    padding: 0;
+}
+
+.heading{
+    text-align: center;
+
+}
+
+#board{
+    
+    height: 600px;
+    width: 600px;
+    background: greenyellow;
+    display: flex;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+    flex-flow: wrap;
+    flex-direction: row;
+    padding: 10px;
+    margin:auto;
+    border: 2px solid black;
+    border-radius: 20px;
+
+}
+
+.block::before{
+    content: "";
+    top: 0;
+    left: 0;
+    height: inherit;
+    width: inherit;
+    background: yellow;
+}
+.block{
+    position: relative;
+    height:166px ;
+    width: 166px;
+    margin: 10px;
+    background: red;
+    box-shadow: 1px 1px 1px black;
+    border: 2px solid black;
+    border-radius: 20px;
+    transition: all 0.3s ease-in;
+    transform: scale(1);
+}
+
+.block:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 2px 2px 1px black;
+}
+
+
+.clicked{
+    background-color: rgb(167, 0, 0);
+}
+.game-container{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 50px;
+}
+.player{
+    max-width: 300px;
+    flex-grow: 1;
+    border: 2px solid black;
+    padding: 10px;
+    border-radius: 20px;
+}
