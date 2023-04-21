@@ -1,15 +1,21 @@
-:root{
+.heading {
+    text-align: center;
+    padding: 20px;
+    margin-top: 0;
+}
+
+body {
+    position: relative;
     margin: 0;
     padding: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
-.heading{
-    text-align: center;
+#board {
 
-}
-
-#board{
-    
     height: 600px;
     width: 600px;
     background: greenyellow;
@@ -19,13 +25,13 @@
     flex-flow: wrap;
     flex-direction: row;
     padding: 10px;
-    margin:auto;
+    margin: auto;
     border: 2px solid black;
     border-radius: 20px;
 
 }
 
-.block::before{
+.block::before {
     content: "";
     top: 0;
     left: 0;
@@ -33,9 +39,10 @@
     width: inherit;
     background: yellow;
 }
-.block{
+
+.block {
     position: relative;
-    height:166px ;
+    height: 166px;
     width: 166px;
     margin: 10px;
     background: red;
@@ -46,22 +53,24 @@
     transform: scale(1);
 }
 
-.block:hover{
+.block:hover {
     cursor: pointer;
     transform: scale(1.05);
     box-shadow: 2px 2px 1px black;
 }
 
 
-.clicked{
+.clicked {
     background-color: rgb(167, 0, 0);
 }
-.game-container{
+
+.game-container {
     display: flex;
     flex-direction: row;
     margin: 10px 50px;
 }
-.player{
+
+.player {
     max-width: 300px;
     text-align: center;
     height: fit-content;
@@ -72,14 +81,16 @@
     padding: 10px;
     border-radius: 20px;
 }
-.name{
+
+.player-name {
     font-size: 40px;
     background: red;
-
+color: white;
     border-radius: 20px;
     margin: 10px;
 }
-.lives{
+
+.lives {
     position: relative;
     height: 10px;
     background: greenyellow;
@@ -87,24 +98,25 @@
     margin: 10px;
     overflow: hidden;
 }
-.lives::after{
+
+.lives-bar {
     position: absolute;
-    content: " ";
     top: 0;
     left: 0;
     bottom: 0;
-    width: 60%;
+    width: 100%;
     border-radius: 20px;
     background: red;
 }
-.scores{
+
+.scores {
     margin: 10px;
     display: flex;
     padding: 10px;
     flex-direction: column;
 }
 
-.scores div{
+.scores div {
     background: rgb(46, 102, 232);
     display: flex;
     flex-direction: row;
@@ -115,8 +127,79 @@
 
 }
 
-.scores span{
+.scores span {
     text-transform: uppercase;
     color: white;
     font-weight: 500;
+}
+
+.btn-reset {
+    cursor: pointer;
+    width: fit-content;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px auto;
+    background: green;
+    color: white;
+    box-shadow: 1px 2px 2px rgb(209, 209, 209);
+    transform: scale(1);
+    transition: all 0.3s ease-in;
+}
+
+.btn-reset:hover {
+    background: rgb(0, 171, 0);
+    transform: scale(1.03);
+}
+
+.play-modal{
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    background: rgba(192, 192, 192, 0.847);
+    margin: 0;
+    padding: 0;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-content: center;
+}
+
+.play-modal-input{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    background: yellow;
+}
+.play-modal-input p{
+    font-size: 25px;
+    margin: 10px;
+    text-align: center;
+    padding: 5px 10px;
+}
+
+.play-modal-input input{
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.play-modal-input button{
+    padding: 10px 15px;
+    border: none;
+    width: fit-content;
+    background: black;
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    transform: translateX(0) translateY(0);
+    transition: all 0.3s ease-in;
+}
+.play-modal-input>button:hover{
+    transform: translateX(2px) translateY(2px);
+    box-shadow: -2px -2px 1px rgb(255, 255, 255);
 }
